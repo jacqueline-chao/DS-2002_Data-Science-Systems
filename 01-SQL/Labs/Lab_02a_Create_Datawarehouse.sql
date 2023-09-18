@@ -1,6 +1,8 @@
 # DROP database `northwind_dw`;
-CREATE DATABASE `Northwind_DW3` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-
+-- Deletes the databased named 'northwind_dw'
+CREATE DATABASE `Northwind_DW` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+-- Could also do: CREATE SCHEMA 'Northwind_DW'
+-- Creates an empty database named 'Northwind_DW'
 USE Northwind_DW3;
 
 # DROP TABLE `dim_customers`;
@@ -25,7 +27,12 @@ CREATE TABLE `dim_customers` (
   KEY `zip_postal_code` (`zip_postal_code`),
   KEY `state_province` (`state_province`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
-
+-- Double-click the 'Northwind_DW' database to make it the default
+-- database.
+-- Primary key: each observation (row) in the table has a unique
+-- primary key (which can be a null value).
+-- Key: It's also known as an index. Create one for columns that will
+-- be used in JOIN, WHERE, and GROUP BY clauses.
 
 # DROP TABLE `dim_employees`;
 CREATE TABLE `dim_employees` (
@@ -108,5 +115,74 @@ CREATE TABLE `dim_suppliers` (
 --       orders_status tables to create a new Fact Table in Northwind_DW.
 -- To keep things simple, don't include purchase order or inventory info
 -- ----------------------------------------------------------------------
-# DROP TABLE `fact_orders`;
-CREATE TABLE `fact_orders`;
+-- northwind.orders: A table of orders
+SELECT * FROM northwind.orders;
+-- northwind.orders_status: A table of the statuses in orders (e.g., New)
+SELECT * FROM northwind.orders_status;
+-- northwind.order_details: A table of additional information for each order
+SELECT * FROM northwind.order_details;
+-- northwind.order_details_status: A table of the statuses in order details (e.g., None)
+SELECT * FROM northwind.order_details_status;
+
+DROP TABLE `fact_orders`;
+CREATE TABLE `fact_orders` (
+	`fact_order_key` int NOT NULL AUTO_INCREMENT,
+    `order_key` int DEFAULT NULL,
+    `employee_key` int DEFAULT NULL,
+    `customer_key` int DEFAULT NULL,
+    `product_key` int DEFAULT NULL,
+    `shipper_key` int DEFAULT NULL,
+    `quantity` decimal(18,4) NOT NULL DEFAULT '0.0000',
+    `order_date` datetime DEFAULT NULL,
+    `shipped_date` datetime DEFAULT NULL,
+    `unit_price` decimal(19,4) DEFAULT '0.0000',
+    `discount` double NOT NULL DEFAULT '0',
+    `shipping_fee` decimal(19,4) DEFAULT '0.0000',
+    `taxes` decimal(19,4) DEFAULT '0.0000',
+    `payment_type` varchar(50) DEFAULT NULL,
+    `paid_date` datetime DEFAULT NULL,
+    `tax_rate` double DEFAULT '0',
+    `order_status` varchar(50) NOT NULL,
+    `order_details_status` varchar(50) NOT NULL,
+    PRIMARY KEY (`fact_order_key`),
+    KEY `order_key` (`order_key`),
+    KEY `customer_key` (`customer_key`),
+    KEY `employee_key` (`employee_key`),
+    KEY `product_key` (`product_key`),
+    KEY `shipper_key` (`shipper_key`)
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4;
+
+-- CREATE TABLE `fact_orders` (
+--   `fact_order_key` int NOT NULL AUTO_INCREMENT,
+--   `order_key` int(11) NOT NULL,
+--   `employee_key` int DEFAULT NULL,
+--   `customer_key` int DEFAULT NULL,
+--   `product_key` int DEFAULT NULL,
+--   `quantity` decimal(18,4) NOT NULL DEFAULT '0.0000',
+--   `unit_price` decimal(19,4) DEFAULT '0.0000',
+--   `discount` double NOT NULL DEFAULT '0',
+--   `date_allocated` datetime DEFAULT NULL,
+--   `order_date` datetime DEFAULT NULL,
+--   `shipped_date` datetime DEFAULT NULL,
+--   `shipper_key` int DEFAULT NULL,
+--   `ship_name` varchar(50) DEFAULT NULL,
+--   `ship_address` longtext,
+--   `ship_city` varchar(50) DEFAULT NULL,
+--   `ship_state_province` varchar(50) DEFAULT NULL,
+--   `ship_zip_postal_code` varchar(50) DEFAULT NULL,
+--   `ship_country_region` varchar(50) DEFAULT NULL,
+--   `shipping_fee` decimal(19,4) DEFAULT '0.0000',
+--   `taxes` decimal(19,4) DEFAULT '0.0000',
+--   `payment_type` varchar(50) DEFAULT NULL,
+--   `paid_date` datetime DEFAULT NULL,
+--   `tax_rate` double DEFAULT '0',
+--   `order_status` varchar(50) NOT NULL,
+--   `order_details_status` varchar(50) NOT NULL,
+--   PRIMARY KEY (`fact_order_key`),
+--   KEY `customer_key` (`customer_key`),
+--   KEY `employee_key` (`employee_key`),
+--   KEY `order_key` (`order_key`),
+--   KEY `product_key` (`product_key`),
+--   KEY `shipper_key` (`shipper_key`),
+--   KEY `fk_orders_orders_status` (`order_status`)
+-- ) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb3;
