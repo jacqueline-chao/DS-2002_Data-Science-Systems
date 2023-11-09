@@ -34,16 +34,8 @@
 -- MAGIC To load this data into Delta properly, we first need to extract the JSON data using the correct schema.  Create an external table against JSON files located at the filepath provided below. Name this table **`events_json`** and declare the schema above.
 
 -- COMMAND ----------
-CREATE TABLE IF NOT EXISTS events_json (
-    key BINARY,
-    offset BIGINT,
-    partition INT,
-    timestamp BIGINT,
-    topic STRING,
-    value BINARY
-)
-USING JSON
-OPTIONS (path = "${da.paths.datasets}/raw/events-kafka")
+
+path = "${da.paths.datasets}/raw/events-kafka"
 
 -- COMMAND ----------
 
@@ -67,14 +59,7 @@ OPTIONS (path = "${da.paths.datasets}/raw/events-kafka")
 
 -- COMMAND ----------
 
-CREATE OR REPLACE TABLE events_raw (
-    key BINARY,
-    offset BIGINT,
-    partition INT,
-    timestamp BIGINT,
-    topic STRING,
-    value BINARY
-)
+
 
 -- COMMAND ----------
 
@@ -95,8 +80,7 @@ CREATE OR REPLACE TABLE events_raw (
 
 -- COMMAND ----------
 
-INSERT INTO events_raw
-SELECT * FROM events_json
+
 
 -- COMMAND ----------
 
@@ -105,7 +89,7 @@ SELECT * FROM events_json
 
 -- COMMAND ----------
 
-SELECT * FROM events_raw
+
 
 -- COMMAND ----------
 
@@ -125,8 +109,9 @@ SELECT * FROM events_raw
 -- MAGIC Use a CTAS statement to create a managed Delta table named **`item_lookup`** that extracts data from the **`parquet`** directory provided below. 
 
 -- COMMAND ----------
-CREATE OR REPLACE TABLE item_lookup
-AS SELECT * FROM parquet.`${da.paths.datasets}/raw/item-lookup`
+
+${da.paths.datasets}/raw/item-lookup
+
 -- COMMAND ----------
 
 -- MAGIC %md
