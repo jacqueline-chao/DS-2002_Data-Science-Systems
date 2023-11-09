@@ -5,7 +5,7 @@
 -- ----------------------------------------------
 -- Populate dim_customers
 -- ----------------------------------------------
-INSERT INTO `northwind_dw`.`dim_customers`
+INSERT INTO `northwind_dw2`.`dim_customers`
 (`customer_key`,
 `company`,
 `last_name`,
@@ -35,13 +35,13 @@ FROM northwind.customers;
 -- ----------------------------------------------
 -- Validate that the Data was Inserted ----------
 -- ----------------------------------------------
-SELECT * FROM northwind_dw.dim_customers;
+SELECT * FROM northwind_dw2.dim_customers;
 
 
 -- ----------------------------------------------
 -- Populate dim_employees
 -- ----------------------------------------------
-INSERT INTO `northwind_dw`.`dim_employees`
+INSERT INTO `northwind_dw2`.`dim_employees`
 (`employee_key`,
 `company`,
 `last_name`,
@@ -77,13 +77,13 @@ FROM `northwind`.`employees`;
 -- ----------------------------------------------
 -- Validate that the Data was Inserted ----------
 -- ----------------------------------------------
-SELECT * FROM northwind_dw.dim_employees;
+SELECT * FROM northwind_dw2.dim_employees;
 
 
 -- ----------------------------------------------
 -- Populate dim_products
 -- ----------------------------------------------
-INSERT INTO `northwind_dw`.`dim_products`
+INSERT INTO `northwind_dw2`.`dim_products`
 (
 `product_code`,
 `product_name`,
@@ -112,13 +112,13 @@ FROM `northwind`.`products`;
 -- ----------------------------------------------
 -- Validate that the Data was Inserted ----------
 -- ----------------------------------------------
-SELECT * FROM northwind_dw.dim_products;
+SELECT * FROM northwind_dw2.dim_products;
 
 
 -- ----------------------------------------------
 -- Populate dim_shippers
 -- ----------------------------------------------
-INSERT INTO `northwind_dw`.`dim_shippers`
+INSERT INTO `northwind_dw2`.`dim_shippers`
 (`shipper_key`,
 `company`,
 `address`,
@@ -138,14 +138,14 @@ FROM `northwind`.`shippers`;
 -- ----------------------------------------------
 -- Validate that the Data was Inserted ----------
 -- ----------------------------------------------
-SELECT * FROM northwind_dw.dim_shippers;
+SELECT * FROM northwind_dw2.dim_shippers;
 
-
+-- No SQL for suppliers?
 
 -- ----------------------------------------------
 -- Populate fact_orders
 -- ----------------------------------------------
-INSERT INTO `northwind_dw`.`fact_orders`
+INSERT INTO `northwind_dw2`.`fact_orders`
 (`order_key`,
 `employee_key`,
 `customer_key`,
@@ -204,4 +204,4 @@ TODO: Write a SELECT Statement that:
 -- ----------------------------------------------
 -- Validate that the Data was Inserted ----------
 -- ----------------------------------------------
-SELECT * FROM northwind_dw.fact_orders;
+SELECT * FROM northwind_dw2.fact_orders;

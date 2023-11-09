@@ -132,7 +132,7 @@ BEGIN
 	END WHILE;
 END//
 
-CALL PopulateDateDimension('2000/01/01', '2010/12/31');
+CALL PopulateDateDimension('2000/01/01', '2023/12/31');
 
 SELECT * FROM dim_date
 LIMIT 20;
