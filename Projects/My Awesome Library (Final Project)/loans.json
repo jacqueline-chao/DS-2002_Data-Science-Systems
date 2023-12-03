@@ -1,0 +1,52 @@
+[
+    {
+        "book_id": 1,
+        "book_title": "The Martian",
+        "book_author": "Andy Weir",
+        "loaner_id": 4,
+        "loaner_name": "Fen Galeway",
+        "loan_start_date": "10/12/2023",
+        "loan_exp_date": "11/12/2023",
+        "return_date": ""
+    },
+    {
+        "book_id": 2,
+        "book_title": "How Not to Die",
+        "book_author": "Michael Greger",
+        "loaner_id": 4,
+        "loaner_name": "Fen Galeway",
+        "loan_start_date": "9/20/2023",
+        "loan_exp_date": "10/20/2023",
+        "return_date": ""
+    },
+    {
+        "book_id": 7,
+        "book_title": "Harry Potter and the Chamber of Secrets",
+        "book_author": "J.K. Rowling",
+        "loaner_id": 1,
+        "loaner_name": "Ailey Thicknesse",
+        "loan_start_date": "8/07/2023",
+        "loan_exp_date": "9/07/2023",
+        "return_date": "9/01/2023"
+    },
+    {
+        "book_id": 9,
+        "book_title": "Pro Git",
+        "book_author": "Ben Straub",
+        "loaner_id": 2,
+        "loaner_name": "Septima Fairfax",
+        "loan_start_date": "8/15/2023",
+        "loan_exp_date": "9/15/2023",
+        "return_date": "10/11/2023"
+    },
+    {
+        "book_id": 7,
+        "book_title":"Harry Potter and the Chamber of Secrets",
+        "book_author":"J.K. Rowling",
+        "loaner_id": 5,
+        "loaner_name": "Robert John",
+        "loan_start_date": "10/21/2023",
+        "loan_exp_date": "11/21/2023",
+        "return_date": ""
+    }
+]

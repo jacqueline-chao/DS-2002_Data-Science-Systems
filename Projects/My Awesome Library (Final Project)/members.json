@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "Ailey Thicknesse",
+        "physical_address": "Over water and under hill",
+        "phone_number": "(123) 234-9878",
+        "email_address": "ailey.thicknesse@gmail.com"
+    },
+    {
+        "id": 2,
+        "name": "Septima Fairfax",
+        "physical_address": "The Forbidden Forest",
+        "phone_number": "",
+        "email_address": ""
+    },
+    {
+        "id": 3,
+        "name": "October Lynx",
+        "physical_address": "Bridgemar",
+        "phone_number": "(575) 433-9122",
+        "email_address": "octo_cat@outlook.com"
+    },
+    {
+        "id": 4,
+        "name": "Fen Galeway",
+        "physical_address": "Past the ravine and up the mountain",
+        "phone_number": "(911) 232-7363",
+        "email_address": ""
+    },
+    {
+        "id": 5,
+        "name": "Robert John",
+        "physical_address": "1523 Cherry Lane, Charlottesville, VA 22901",
+        "phone_number": "(255) 109-1293",
+        "email_address": "robert.john@gmail.com"
+    }
+]
